@@ -11,32 +11,22 @@ def init():
 	print('gpio init completed!')
 	
 def bitSelect(BitNum):
-    if (BitNum < 1 or BitNum > 4):
-        GPIO.output(pins['pin_1'], GPIO.LOW)
-        GPIO.output(pins['pin_2'], GPIO.LOW)
-        GPIO.output(pins['pin_3'], GPIO.LOW)
-        GPIO.output(pins['pin_4'], GPIO.LOW)
-    else:
-        if (BitNum == 1):
+    GPIO.output(pins['pin_1'], GPIO.LOW)
+    GPIO.output(pins['pin_2'], GPIO.LOW)
+    GPIO.output(pins['pin_3'], GPIO.LOW)
+    GPIO.output(pins['pin_4'], GPIO.LOW)
+    
+    if 0 < len(BitNum) < 5:
+        print('check!')
+        if BitNum[0]:
             GPIO.output(pins['pin_1'], GPIO.HIGH)
-            GPIO.output(pins['pin_2'], GPIO.LOW)
-            GPIO.output(pins['pin_3'], GPIO.LOW)
-            GPIO.output(pins['pin_4'], GPIO.LOW)
-        if (BitNum == 2):
-            GPIO.output(pins['pin_1'], GPIO.LOW)
+        if BitNum[1]:
             GPIO.output(pins['pin_2'], GPIO.HIGH)
-            GPIO.output(pins['pin_3'], GPIO.LOW)
-            GPIO.output(pins['pin_4'], GPIO.LOW)
-        if (BitNum == 3):
-            GPIO.output(pins['pin_1'], GPIO.LOW)
-            GPIO.output(pins['pin_2'], GPIO.LOW)
+        if BitNum[2]:
             GPIO.output(pins['pin_3'], GPIO.HIGH)
-            GPIO.output(pins['pin_4'], GPIO.LOW)
-        if (BitNum == 4):
-            GPIO.output(pins['pin_1'], GPIO.LOW)
-            GPIO.output(pins['pin_2'], GPIO.LOW)
-            GPIO.output(pins['pin_3'], GPIO.LOW)
+        if BitNum[3]:
             GPIO.output(pins['pin_4'], GPIO.HIGH)
+            
     print('bitSelect completed!')
     
 	
@@ -201,20 +191,20 @@ def pickNum(number):
 		clear()
 
 		
-def Display(Bit, Number):
-	bitSelect(Bit)
+def Display(Bits, Number):
+	bitSelect(Bits)
 	pickNum(Number)
 	time.sleep(0.001)
 
 def loop():
     while True:
-        Display(1,1)
+        Display([1, 0, 0, 0],1)
         time.sleep(1)
-        Display(2,2)
+        Display([1, 1, 0, 0],2)
         time.sleep(1)
-        Display(3,3)
+        Display([1, 1, 1, 0],3)
         time.sleep(1)
-        Display(4,4)
+        Display([1, 1, 1, 1],4)
         time.sleep(1)
 	
 if __name__ == '__main__':
