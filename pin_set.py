@@ -14,9 +14,13 @@ def init():
 		GPIO.setup(pins_seg[i], GPIO.OUT)
 	print('gpio init completed!')
 
+
+
 def loop():
 	while True:
-		Display(2149)
+		for i in range(10000):
+			Display(i)
+			time.sleep(0.002)
 
 
 
@@ -24,11 +28,10 @@ def Display(number):
 	if (number < 0 or number > 9999):
 		print('Wrong number')
 		exit(0)
-
 	for i, c in enumerate(str(number)):
 		num_select(int(c))
-		seg_select(i + 1)
-		time.sleep(0.001)
+		seg_select(i + 5 - len(str(number)))
+		time.sleep(0.002)
 		clear_segment()
 
 
