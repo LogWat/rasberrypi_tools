@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import random
 from displayers import *
+from get_hw_data import *
 
 pins_num = {'pinA':3, 'pinB':5, 'pinC':21, 'pinD':8, 'pinE':10, 'pinF':11, 'pinG':12, 'pinDP':13}
 pins_seg = {'pin_1':15, 'pin_2':16, 'pin_3':18, 'pin_4':19}
@@ -19,6 +20,8 @@ def init():
 
 def loop():
 	while True:
+		tmpl = get_cpu_tmpl()
+		print(tmpl)
 		Display(random.randint(0, 9999), 1)
 
 
