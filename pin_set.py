@@ -5,6 +5,7 @@ from displayers import *
 
 pins_num = {'pinA':3, 'pinB':5, 'pinC':21, 'pinD':8, 'pinE':10, 'pinF':11, 'pinG':12, 'pinDP':13}
 pins_seg = {'pin_1':15, 'pin_2':16, 'pin_3':18, 'pin_4':19}
+prev_number = -1
 
 def init():
 	GPIO.setmode(GPIO.BOARD)
@@ -18,22 +19,26 @@ def init():
 
 def loop():
 	while True:
-		for i in range(10000):
-			Display(i)
-			time.sleep(0.002)
+		Display(random.randint(0, 9999), 1)
 
 
 
-def Display(number):
-	if (number < 0 or number > 9999):
+def Display(number, t):
+	if number < 0 or number > 9999:
 		print('Wrong number')
 		exit(0)
-	for i, c in enumerate(str(number)):
-		num_select(int(c))
-		seg_select(i + 5 - len(str(number)))
-		time.sleep(0.002)
-		clear_segment()
 
+	print('Display {}'.format(number))
+	start = time.time()
+	while True:
+		for i, c in enumerate(str(number)):
+			num_select(int(c))
+			seg_select(i + 5 - len(str(number)))
+			time.sleep(0.001)
+			clear_segment()
+		end = time.time()
+		if end - start >= t:
+			break
 
 
 def num_select(number):

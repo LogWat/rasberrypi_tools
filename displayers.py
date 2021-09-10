@@ -21,7 +21,7 @@ def display_3():
 	GPIO.output(pins_num['pinE'], GPIO.HIGH)
 	GPIO.output(pins_num['pinF'], GPIO.HIGH)
 	GPIO.output(pins_num['pinDP'], GPIO.HIGH)
-	
+
 def display_4():
 	GPIO.output(pins_num['pinA'], GPIO.HIGH)
 	GPIO.output(pins_num['pinD'], GPIO.HIGH)
@@ -37,7 +37,6 @@ def display_6():
 	GPIO.output(pins_num['pinB'], GPIO.HIGH)
 	GPIO.output(pins_num['pinDP'], GPIO.HIGH)
 
-
 def display_7():
 	GPIO.output(pins_num['pinD'], GPIO.HIGH)
 	GPIO.output(pins_num['pinE'], GPIO.HIGH)
@@ -47,8 +46,8 @@ def display_7():
 	
 def display_8():
 	GPIO.output(pins_num['pinDP'], GPIO.HIGH)
-	
-	
+
+
 def display_9():
 	GPIO.output(pins_num['pinE'], GPIO.HIGH)
 	GPIO.output(pins_num['pinDP'], GPIO.HIGH)
